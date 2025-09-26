@@ -2,7 +2,7 @@
 1. 框架：LangChain4j，model：Qwen-vl-max（通义），mcp：web-search（智谱），workflow：编码实现 Node + WorkflowEngine组件  
 2. 扩展功能：拦截器（guardrail）、rag + 自定义tool，用于构建特定功能的Agent，本项目是用于整合调用者背景信息  
 
-## 需要实现： 
+## 需求： 
 1. 设计一个简单的Workflow
 2. 设计一个Workflow的Graph DAG，用于Agent编排
 3. 设计三个Agent，Agent1和Agent2完成后，启动Agent3，输出结果  
