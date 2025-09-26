@@ -8,7 +8,8 @@
 3. 设计三个Agent，Agent1和Agent2完成后，启动Agent3，输出结果  
 
 ## 项目组件  
-1. Agent1，SearchAgent，由 通义 model + 智谱 web-serch tool，配合 system-prompt-for-search 实现  
-2. Agent2，AddBackgroudAgent，由 通义 model + RAG(存储用户、公司等背景信息) + 配合RAG的自定义tool，配合 system-prompt-addbg 实现  
-3. Agent3，MergeAgent，由通义 model，配合 system-prompt-merge 实现  
-4. Workflow，Node + WorkflowEngine 组件构成，均自行编码实现
+
+1. Workflow，Node + WorkflowEngine 组件构成，均自行编码实现
+2. Agent1，SearchAgent，由 通义 model + 智谱 web-serch tool，配合 system-prompt-for-search 实现
+3. Agent2，AddBackgroudAgent，由 通义 model + RAG(存储用户、公司等背景信息) + 配合RAG的自定义tool，配合 system-prompt-addbg 实现  
+4. Agent3，MergeAgent，由通义 model，配合 system-prompt-merge 实现  
