@@ -1,5 +1,5 @@
 ## 整体介绍  
-1. 框架：**LangChain4j**，model：Qwen-vl-max（通义），mcp：web-search（智谱），workflow：编码实现 Node + WorkflowEngine组件  
+1. 框架：**LangChain4j**，model：Qwen-max（通义），mcp：web-search（智谱），workflow：编码实现 Node + WorkflowEngine组件  
 2. 扩展功能：拦截器（guardrail）、rag + 自定义tool，用于构建特定功能的Agent，本项目是用于调用私域知识库  
 
 ## 需求： 
