@@ -1,0 +1,33 @@
+package com.zkhm.exam.ai.agents;
+
+import com.zkhm.exam.ai.guardrail.SafeInputGuardRail;
+import dev.langchain4j.data.message.AiMessage;
+import dev.langchain4j.model.output.Response;
+import dev.langchain4j.service.SystemMessage;
+import dev.langchain4j.service.guardrail.InputGuardrails;
+
+@InputGuardrails({SafeInputGuardRail.class})
+public interface AddBGAgent {
+    @SystemMessage("""
+            你是企业 IT 支持团队的知识专家，只能访问内部知识库。
+                        
+            你的任务是：根据用户的问题，在公司私有知识库中查找最相关的解决方案或背景信息。
+                        
+            要求：
+            1. 回答必须严格基于内部文档内容，不得编造或猜测。
+            2. 如果没有找到相关内容，明确回复："未在内部知识库中找到相关信息"。
+            3. 输出格式为 JSON，包含：
+               - "relevant_knowledge": 匹配的知识摘要
+               - "doc_references": 匹配的文档 ID 列表（如 kb-printer-win10-network）
+               - "suggested_steps": 建议的操作步骤（若有）
+                        
+            示例输出：
+            {
+              "relevant_knowledge": "Windows 10 网络打印机连接失败可能是由于防火墙阻止了 TCP 9100 端口。",
+              "doc_references": ["kb-printer-win10-network"],
+              "suggested_steps": ["检查防火墙设置，放行 TCP 9100 端口"]
+            }
+            """)
+    Response<AiMessage> addBG(String question);
+
+}
