@@ -36,7 +36,7 @@
 
 功能  
 
-全局共享数据容器，用于在 Agent 间传递输入、中间结果与状态  
+**全局共享数据容器，用于在 Agent 间传递输入、中间结果与状态*  
 代码  
 ```
 public class WorkflowContext {
@@ -51,15 +51,15 @@ public class WorkflowContext {
 
 功能  
 
-管理节点集合与依赖关系  
+**管理节点集合与依赖关系*  
 核心结构  
 ```
 private final Map<String, Node> nodes = new LinkedHashMap<>();
 private final Map<String, Set<String>> dependentsMap = new HashMap<>();
 ```
 关键方法：  
-addNode()：添加节点并建立反向索引  
-getDependents()：获取某节点的下游节点  
+- addNode()：添加节点并建立反向索引  
+- getDependents()：获取某节点的下游节点  
 3. 节点 SimpleNode
 核心字段  
 ```
@@ -79,10 +79,8 @@ public interface Condition {
 
 核心流程  
 
-环路检测（拓扑排序） 
-主循环：扫描 → 提交可执行任务 → 等待批次完成  
-异常捕获与上下文记录  
-并行执行能力  
+- 环路检测（拓扑排序）: 主循环：扫描 → 提交可执行任务 → 等待批次完成  
+- 异常捕获与上下文记录  
+- 并行执行能力  
 
-同一批次中，所有满足依赖的节点并行执行  
-支持 Agent1 与 Agent2 同时运行  
+**同一批次中，所有满足依赖的节点并行执行* :支持 Agent1 与 Agent2 同时运行  
