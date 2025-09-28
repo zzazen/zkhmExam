@@ -19,7 +19,7 @@
 3. **Agent1**，SearchAgent，由 通义 model + 智谱 web-serch tool，配合 system-prompt-search 实现
 4. **Agent2**，AddBackgroudAgent，由 通义 model + RAG(存储设备、服务器常见问题的解决方案) + 配合RAG的自定义tool，配合 system-prompt-addbg 实现  
 5. **Agent3**，MergeAgent，由通义 model，配合 system-prompt-merge 实现
-6. **注**：Workflow、DAG的实现详见下文的“核心模块说明”。
+ **注**：Workflow、DAG的实现详见下文的“核心模块说明”。
 
 ## 用例
 ### 接口方法：executeAgentWorkflow( String query )
