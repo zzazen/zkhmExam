@@ -17,9 +17,9 @@
 
 ## 用例
 ### 接口方法：executeAgentWorkflow( String query )
-输入参数：类型：String，含义：用户输入的任务
-输出参数：类型： WorkflowContext（内置ConCurrentHashMap），即包含用户输入、所有中间agent输出的key、value，以及最终agent输出的key、value
-注：agent的输出key为"${agent_name}_result"
+输入参数：类型：String，含义：用户输入的任务  
+输出参数：类型： WorkflowContext（内置ConCurrentHashMap），即包含用户输入、所有中间agent输出的key、value，以及最终agent输出的key、value  
+注：agent的输出key为"${agent名}_result"  
 举例：  
 ```
 @SpringBootTest
