@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: local
+
+langchain4j:
+  community:
+    dashscope:
+      chat-model:
+        api-key: XXXXX    // 通义api-key
+        model-name: qwen-max
+      embedding-model:
+        model-name: text-embedding-v4
+        api-key: XXXXX    // 通义
+
+bigmodel:
+  api-key: XXXXX    // 智谱api-key
