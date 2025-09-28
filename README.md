@@ -32,7 +32,7 @@
 ```
 
 ## 核心模块说明
-1. 上下文管理 WorkflowContext
+### 1. 上下文管理 WorkflowContext
 
 功能 : **全局共享数据容器，用于在 Agent 间传递输入、中间结果与状态*  
 代码  
@@ -45,7 +45,7 @@ public class WorkflowContext {
     public boolean contains(String key) { ... }
 }
 ```
-2. DAG编排 WorkflowDefinition
+### 2. DAG编排 WorkflowDefinition
 
 功能 : **管理节点集合与依赖关系*  
 核心结构  
@@ -56,7 +56,7 @@ private final Map<String, Set<String>> dependentsMap = new HashMap<>();
 关键方法：  
 - addNode()：添加节点并建立反向索引  
 - getDependents()：获取某节点的下游节点  
-3. 节点 SimpleNode
+### 3. 节点 SimpleNode
 核心字段  
 ```
 private final String id;
@@ -64,14 +64,14 @@ private final Set<String> dependencies;
 private final Condition enableCondition;
 private final Callable<Void> task;
 ```
-4. 逻辑表达式 Condition
+### 4. 逻辑表达式 Condition
 接口  
 ```
 public interface Condition {
     boolean evaluate(WorkflowContext context);
 }
 ```
-5. 执行引擎 WorkflowEngine
+### 5. 执行引擎 WorkflowEngine
 
 核心流程  
 
