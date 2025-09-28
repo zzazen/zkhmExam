@@ -18,21 +18,14 @@
 ## 用例
 ### 接口方法：executeAgentWorkflow( String query )
 输入参数：类型：String，含义：用户输入的任务  
-输出参数：类型： WorkflowContext（内置ConCurrentHashMap），即包含用户输入、所有中间agent输出的key、value，以及最终agent输出的key、value  
-注：agent的输出key为"${agent名}_result"  
+输出参数：类型： WorkflowContext（内置ConCurrentHashMap），包含用户输入、所有中间agent输出的key、value，以及最终agent输出的key、value  
+注：所有agent的输出的key均为"${agent名}_result"。对于中间agent，输出的value一般为JSON格式，最终agent，输出的value为String格式。 
 举例：  
 ```
-@SpringBootTest
-class WorkflowServiceTest {
-    @Autowired
-    private WorkflowService workflowService;
-
     @Test
     void testExecuteAgentWorkflow() {
-        String query = "然并卵";
-        WorkflowContext workflowContext = workflowService.executeAgentWorkflow(query);
-        String s = workflowContext.get("agent3_result", String.class);
-        System.out.println(s);
+        String query = "XXX";  // 用户查询
+        WorkflowContext workflowContext = workflowService.executeAgentWorkflow(query);  // 调用自定义服务
+        String s = workflowContext.get("agent3_result", String.class);  //  根据业务逻辑，查看最终返回值，此处agent3作为最终输出，所以查看agent3_result
     }
-}
 ```
