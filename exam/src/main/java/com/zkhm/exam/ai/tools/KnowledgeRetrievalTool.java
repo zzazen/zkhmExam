@@ -31,8 +31,11 @@ public class KnowledgeRetrievalTool {
      * 适用于技术文档、项目说明、内部 FAQ 等场景
      */
 
-    @Resource
-    private ContentRetriever myContentRetriever;
+    private final ContentRetriever myContentRetriever;
+
+    public KnowledgeRetrievalTool(ContentRetriever myContentRetriever) {
+        this.myContentRetriever = myContentRetriever;
+    }
 
     @Tool(value = """
             Searches the internal knowledge base using semantic similarity to find relevant information.

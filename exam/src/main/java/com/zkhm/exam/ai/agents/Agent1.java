@@ -53,6 +53,7 @@ public class Agent1 implements Callable<Void> {
             throw new RuntimeException("Failed to parse JSON: " + jsonText, e);
         }
         context.put("agent1_result", result);
+        log.info("Agent1 result: " + result);
         return null;
     }
 

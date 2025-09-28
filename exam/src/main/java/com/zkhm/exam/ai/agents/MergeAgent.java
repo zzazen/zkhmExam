@@ -4,7 +4,6 @@ import com.zkhm.exam.ai.guardrail.SafeInputGuardRail;
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.guardrail.InputGuardrails;
 
-@InputGuardrails({SafeInputGuardRail.class})
 public interface MergeAgent {
     @SystemMessage("""
             你是高级 IT 技术顾问，负责整合多方信息，为用户提供完整、安全、可执行的解决方案。

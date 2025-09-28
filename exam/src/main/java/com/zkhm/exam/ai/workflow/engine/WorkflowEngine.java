@@ -62,8 +62,8 @@ public class WorkflowEngine {
                 }
             }
         } catch (Exception e) {
-            context.put("workflow_error", e.getMessage());
-            throw new RuntimeException("Workflow execution failed because :"+e.getMessage(), e);
+            context.put("workflow_error", "程序异常");
+            throw new RuntimeException("Workflow execution failed because :", e);
         }
         return context;
     }

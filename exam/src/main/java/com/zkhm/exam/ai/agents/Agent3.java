@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zkhm.exam.ai.workflow.content.WorkflowContext;
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.model.output.Response;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,7 @@ import java.util.concurrent.Callable;
  **/
 
 @Component
+@Slf4j
 public class Agent3 implements Callable<Void> {
     @Autowired
     private MergeAgent mergeAgent;
@@ -46,12 +48,12 @@ public class Agent3 implements Callable<Void> {
             // 构造输入给最终 Agent
             String inputPrompt = buildInputPrompt(query, agent1Output, agent2Output);
 
-
             // 调用最终生成服务
             String merge = mergeAgent.merge(inputPrompt);
 
             // 写回上下文
             context.put("agent3_result", merge); // 或 context.put("final_result", finalResult.toMap())
+            log.info("Agent3 result: {}", merge);
 
         } catch (Exception e) {
             throw new RuntimeException("Agent3 execution failed", e);

@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  **/
 
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.zkhm.exam.ai")
 public class MainApplication {
     public static void main(String[] args) {
         SpringApplication.run(MainApplication.class, args);

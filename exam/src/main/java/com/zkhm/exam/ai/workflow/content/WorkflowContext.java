@@ -31,6 +31,10 @@ public class WorkflowContext{
     }
 
     public void put(String key, Object value) {
+        if (value == null || value.toString().trim().isEmpty()) {
+            data.put(key,"输入为空");
+            return;
+        }
         data.put(key, value);
     }
 

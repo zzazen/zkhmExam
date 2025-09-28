@@ -60,7 +60,7 @@ public class AgentServiceFactory {
                 .chatModel(qwenChatModel)  // qwen-vl-max model
                 .chatMemory(chatMemory)  // 会话记忆2
                 .contentRetriever(myContentRetriever)  // RAG检索增强
-                .tools(new KnowledgeRetrievalTool())  // 工具进一步增强检索
+                .tools(new KnowledgeRetrievalTool(myContentRetriever))  // 工具进一步增强检索
                 .build();
     }
 
