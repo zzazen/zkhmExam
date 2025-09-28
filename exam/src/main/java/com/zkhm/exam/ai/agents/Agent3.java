@@ -51,7 +51,7 @@ public class Agent3 implements Callable<Void> {
             String merge = mergeAgent.merge(inputPrompt);
 
             // 写回上下文
-            context.put("final_result", merge); // 或 context.put("final_result", finalResult.toMap())
+            context.put("agent3_result", merge); // 或 context.put("final_result", finalResult.toMap())
 
         } catch (Exception e) {
             throw new RuntimeException("Agent3 execution failed", e);

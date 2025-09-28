@@ -32,9 +32,9 @@ class WorkflowServiceTest {
 
     @Test
     void testExecuteAgentWorkflow() {
-        String query = "办公室印刷机死机怎么办?";
+        String query = "我在准备一场后端开发面试，给我一些建议。";
         WorkflowContext workflowContext = workflowService.executeAgentWorkflow(query);
-        String s = workflowContext.get("final_result", String.class);
+        String s = workflowContext.get("agent3_result", String.class);
         System.out.println(s);
 
     }

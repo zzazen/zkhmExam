@@ -15,12 +15,12 @@ public interface AddBGAgent {
                         
             要求：
             1. 回答必须严格基于内部文档内容，不得编造或猜测。
-            2. 如果没有找到相关内容，明确回复："未在内部知识库中找到相关信息"。
+            2. 如果没有找到相关内容，JSON输出：
+               - "not_find": 未在内部知识库中找到相关信息
             3. 输出格式为 JSON，包含：
                - "relevant_knowledge": 匹配的知识摘要
                - "doc_references": 匹配的文档 ID 列表（如 kb-printer-win10-network）
-               - "suggested_steps": 建议的操作步骤（若有）
-                        
+               - "suggested_steps": 建议的操作步骤（若有）      
             示例输出：
             {
               "relevant_knowledge": "Windows 10 网络打印机连接失败可能是由于防火墙阻止了 TCP 9100 端口。",

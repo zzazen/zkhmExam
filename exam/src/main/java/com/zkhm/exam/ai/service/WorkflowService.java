@@ -10,6 +10,7 @@ import com.zkhm.exam.ai.workflow.dag.Node;
 import com.zkhm.exam.ai.workflow.dag.impl.SimpleNode;
 import com.zkhm.exam.ai.workflow.definition.WorkflowDefinition;
 import com.zkhm.exam.ai.workflow.engine.WorkflowEngine;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,7 @@ import java.util.Set;
  **/
 
 @Service
+@Slf4j
 public class WorkflowService {
 
     @Autowired
@@ -59,7 +61,7 @@ public class WorkflowService {
                 () -> {
                     agent1.setContext(context);
                     agent1.call();
-                    System.out.println("agent1被调用");
+                    log.info("agent1被调用");
                     return null;
                 }
         );
@@ -71,7 +73,7 @@ public class WorkflowService {
                 () -> {
                     agent2.setContext(context);
                     agent2.call();
-                    System.out.println("agent2被调用");
+                    log.info("agent2被调用");
                     return null;
                 }
         );
@@ -83,7 +85,7 @@ public class WorkflowService {
                 () -> {
                     agent3.setContext(context);
                     agent3.call();
-                    System.out.println("agent3被调用");
+                    log.info("agent3被调用");
                     return null;
                 }
         );
