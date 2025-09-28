@@ -1,12 +1,16 @@
 ## 整体介绍  
-1. 框架：**LangChain4j**，model：Qwen-max（通义），mcp：web-search（智谱）
-2. workflow：编码实现 Condition + WorkflowContent组件  ，dag：编码实现 Node + WorkflowDefine + WorkflowEngine 组件，详见下文 “核心模块说明”
-3. 扩展功能：拦截器（guardrail）、rag：text-embedding-v4 + 自定义tool，用于构建特定功能的Agent，本项目是用于调用私域知识库，包含打印机故障、系统故障等解决方案  
 
-## 需求： 
+### 需求： 
 1. 设计一个简单的Workflow
 2. 设计一个Workflow的Graph DAG，用于Agent编排
-3. 设计三个Agent，Agent1和Agent2完成后，启动Agent3，输出结果  
+3. 设计三个Agent，Agent1和Agent2完成后，启动Agent3，输出结果 
+
+### 技术栈
+- **框架**：LangChain4j
+- **大模型**：Qwen-max（通义千问）
+- **MCP 工具**：web-search（智谱）
+- **RAG 向量模型**：text-embedding-v4
+- **私域知识库**：打印机故障、系统故障等解决方案文档  
 
 ## 组件  
 
