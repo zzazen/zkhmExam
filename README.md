@@ -15,17 +15,16 @@
 ## 组件  
 
 1. **Workflow**，Condition(And、Or、Not三种实现) + WorkflowContent + WorkflowDefine + WorkflowEngine 组件构成，均自行编码实现
-2. **DAG**，Node(SimpleNode) + WorkflowDefine + WorkflowEngine 组件构成，自行编码实现
+2. **DAG**，Node(SimpleNode) + WorkflowDefine + WorkflowEngine 组件构成，自行编码实现。**注**：Workflow、DAG的实现详见下文的“核心模块说明”。
 3. **Agent1**，SearchAgent，由 通义 model + 智谱 web-serch tool，配合 system-prompt-search 实现
 4. **Agent2**，AddBackgroudAgent，由 通义 model + RAG(存储设备、服务器常见问题的解决方案) + 配合RAG的自定义tool，配合 system-prompt-addbg 实现  
 5. **Agent3**，MergeAgent，由通义 model，配合 system-prompt-merge 实现
- **注**：Workflow、DAG的实现详见下文的“核心模块说明”。
 
 ## 用例
 ### 接口方法：executeAgentWorkflow( String query )
 - 输入参数：类型：String，含义：用户输入的任务  
 - 输出参数：类型： WorkflowContext（内置ConCurrentHashMap），包含用户输入、所有中间agent输出的key、value，以及最终agent输出的key、value  
-注：所有agent的输出的key均为"${agent名}_result"。对于中间agent，输出的value一般为JSON格式，最终agent，输出的value为String格式。 
+ **注**：所有agent的输出的key均为"${agent名}_result"。对于中间agent，输出的value一般为JSON格式，最终agent，输出的value为String格式。 
 举例：  
 ```
     @Test
