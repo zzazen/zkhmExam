@@ -15,7 +15,8 @@
 4. **Agent2**，AddBackgroudAgent，由 通义 model + RAG(存储设备、服务器常见问题的解决方案) + 配合RAG的自定义tool，配合 system-prompt-addbg 实现  
 5. **Agent3**，MergeAgent，由通义 model，配合 system-prompt-merge 实现  
 
-## 测试用例
+## 用例
+### 接口方法：workflowService.executeAgentWorkflow( String query )
 ```
 @SpringBootTest
 class WorkflowServiceTest {
