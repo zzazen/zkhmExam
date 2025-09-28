@@ -1,6 +1,7 @@
 ## 整体介绍  
-1. 框架：**LangChain4j**，model：Qwen-max（通义），mcp：web-search（智谱）， workflow：编码实现 Condition + WorkflowContent组件  ，dag：编码实现 Node + WorkflowDefine + WorkflowEngine 组件
-2. 扩展功能：拦截器（guardrail）、rag：text-embedding-v4 + 自定义tool，用于构建特定功能的Agent，本项目是用于调用私域知识库，包含打印机故障、系统故障等解决方案  
+1. 框架：**LangChain4j**，model：Qwen-max（通义），mcp：web-search（智谱）
+2. workflow：编码实现 Condition + WorkflowContent组件  ，dag：编码实现 Node + WorkflowDefine + WorkflowEngine 组件，详见下文 “核心模块说明”
+3. 扩展功能：拦截器（guardrail）、rag：text-embedding-v4 + 自定义tool，用于构建特定功能的Agent，本项目是用于调用私域知识库，包含打印机故障、系统故障等解决方案  
 
 ## 需求： 
 1. 设计一个简单的Workflow
@@ -29,3 +30,59 @@
         String s = workflowContext.get("agent3_result", String.class);  //  根据业务逻辑，查看最终返回值，此处agent3作为最终输出，所以查看agent3_result
     }
 ```
+
+## 核心模块说明
+1. 上下文管理 WorkflowContext
+
+功能  
+
+全局共享数据容器，用于在 Agent 间传递输入、中间结果与状态  
+代码  
+```
+public class WorkflowContext {
+    private static final Map<String, Object> data = new ConcurrentHashMap<>();
+
+    public <T> T get(String key, Class<T> type) { ... }
+    public void put(String key, Object value) { ... }
+    public boolean contains(String key) { ... }
+}
+```
+2. DAG编排 WorkflowDefinition
+
+功能  
+
+管理节点集合与依赖关系  
+核心结构  
+```
+private final Map<String, Node> nodes = new LinkedHashMap<>();
+private final Map<String, Set<String>> dependentsMap = new HashMap<>();
+```
+关键方法：  
+addNode()：添加节点并建立反向索引  
+getDependents()：获取某节点的下游节点  
+3. 节点 SimpleNode
+核心字段  
+```
+private final String id;
+private final Set<String> dependencies;
+private final Condition enableCondition;
+private final Callable<Void> task;
+```
+4. 逻辑表达式 Condition
+接口  
+```
+public interface Condition {
+    boolean evaluate(WorkflowContext context);
+}
+```
+5. 执行引擎 WorkflowEngine
+
+核心流程  
+
+环路检测（拓扑排序） 
+主循环：扫描 → 提交可执行任务 → 等待批次完成  
+异常捕获与上下文记录  
+并行执行能力  
+
+同一批次中，所有满足依赖的节点并行执行  
+支持 Agent1 与 Agent2 同时运行  
