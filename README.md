@@ -7,7 +7,7 @@
 2. 设计一个Workflow的Graph DAG，用于Agent编排
 3. 设计三个Agent，Agent1和Agent2完成后，启动Agent3，输出结果  
 
-## 项目组件  
+## 组件  
 
 1. **Workflow**，Condition(And、Or、Not三种实现) + WorkflowContent + WorkflowDefine + WorkflowEngine 组件构成，均自行编码实现
 2. **DAG**，Node(SimpleNode) + WorkflowDefine + WorkflowEngine 组件构成，自行编码实现
@@ -16,7 +16,11 @@
 5. **Agent3**，MergeAgent，由通义 model，配合 system-prompt-merge 实现  
 
 ## 用例
-### 接口方法：workflowService.executeAgentWorkflow( String query )
+### 接口方法：executeAgentWorkflow( String query )
+输入参数：类型：String，含义：用户输入的任务
+输出参数：类型： WorkflowContext（内置ConCurrentHashMap），即包含用户输入、所有中间agent输出的key、value，以及最终agent输出的key、value
+注：agent的输出key为"${agent_name}_result"
+举例：  
 ```
 @SpringBootTest
 class WorkflowServiceTest {
