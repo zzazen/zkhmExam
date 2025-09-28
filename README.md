@@ -18,8 +18,8 @@
 
 ## 用例
 ### 接口方法：executeAgentWorkflow( String query )
-输入参数：类型：String，含义：用户输入的任务  
-输出参数：类型： WorkflowContext（内置ConCurrentHashMap），包含用户输入、所有中间agent输出的key、value，以及最终agent输出的key、value  
+- 输入参数：类型：String，含义：用户输入的任务  
+- 输出参数：类型： WorkflowContext（内置ConCurrentHashMap），包含用户输入、所有中间agent输出的key、value，以及最终agent输出的key、value  
 注：所有agent的输出的key均为"${agent名}_result"。对于中间agent，输出的value一般为JSON格式，最终agent，输出的value为String格式。 
 举例：  
 ```
@@ -34,9 +34,7 @@
 ## 核心模块说明
 1. 上下文管理 WorkflowContext
 
-功能  
-
-**全局共享数据容器，用于在 Agent 间传递输入、中间结果与状态*  
+功能 : **全局共享数据容器，用于在 Agent 间传递输入、中间结果与状态*  
 代码  
 ```
 public class WorkflowContext {
@@ -49,9 +47,7 @@ public class WorkflowContext {
 ```
 2. DAG编排 WorkflowDefinition
 
-功能  
-
-**管理节点集合与依赖关系*  
+功能 : **管理节点集合与依赖关系*  
 核心结构  
 ```
 private final Map<String, Node> nodes = new LinkedHashMap<>();
@@ -83,4 +79,4 @@ public interface Condition {
 - 异常捕获与上下文记录  
 - 并行执行能力  
 
-**同一批次中，所有满足依赖的节点并行执行* :支持 Agent1 与 Agent2 同时运行  
+同一批次中，所有满足依赖的节点并行执行 : **支持 Agent1 与 Agent2 同时运行*
